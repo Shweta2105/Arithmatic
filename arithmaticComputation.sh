@@ -22,3 +22,8 @@ Results[Result3]="( $result3 )"
 Results[Result4]="( $result4 )"
 
 echo All Computation Results : ${Results[@]}
+for key in "${Results[@]}"
+do 
+	echo $key
+done
+echo All result : ${Results[@]}
