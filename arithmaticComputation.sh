@@ -3,6 +3,9 @@
 echo "Enter the  three inputs ::"
 read a b c
 
-result=$(($a+$b*$c))
+result1=$(($a+$b*$c))
 
-echo $result
+echo $result1
+
+result2-$(($a*$b+$c))
+echo $result2
