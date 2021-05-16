@@ -53,3 +53,22 @@ for (( i=0; i <= 3; i++ ))
 do
   echo ${Array[$i]}
 done
+
+for (( i = 0; i <= 3; i++ ))
+do
+   for (( j = $i; j <= 3; j++ ))
+   do
+      if [ ${Array[$i]} -gt ${Array[$j]} ]
+		 then
+       t=${Array[$i]}
+       Array[$i]=${Array[$j]}
+       Array[$j]=$t
+      fi
+   done
+done
+
+echo -e "\nResult sorted in asecending order :"
+for ((i=0; i<=3; i++ ))
+do
+	echo ${Array[$i]}
+done
