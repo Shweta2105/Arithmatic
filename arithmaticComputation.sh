@@ -1,29 +1,55 @@
 #!/bin/bash -x
 
-echo "Enter the  three inputs ::"
-read a b c
+echo "Enter the first Number"
+read a
+echo "Enter the second Number"
+read b
+echo "Enter the third Number"
+read c
+result1=$(($a+($b*$c)))
+result2=$((($a*$b)+$c))
+result3=$(($c+($a/$b)))
+result4=$((($a%$b)+$c))
+echo "$a+$b*$c= $result1"
+echo "$a*$b+$C= $result2"
+echo "$c+$a/$b= $result3"
+echo "$a%$b+$c= $result4"
+declare -A test_var
+test_var['key1']=$result1
+test_var['key2']=$result2
+test_var['key3']=$result3
+test_var['key4']=$result4
+echo ${test_var[key1]}
+echo ${test_var[key2]}
+echo ${test_var[key3]}
+echo ${test_var[key4]}
+counter=0
+Array[((counter++))]=$result1
+Array[((counter++))]=$result2
+Array[((counter++))]=$result3
+Array[((counter++))]=$result4
+echo ${Array[@]}
+echo "Original Numbers in array:"
+for (( i = 0; i <= 3; i++ ))
+    do
+      echo ${Array[$i]}
+    done
 
-result1=$(($a+$b*$c))
-echo $result1
-
-result2=$(($a*$b+$c))
-echo $result2
-
-result3=$(($c+$a/$b))
-echo $result3
-
-result4=$(($a%$b+$c))
-echo $result4
-
-declare -A Results
-Results[Result1]="( $result1 )"
-Results[Result2]="( $result2 )"
-Results[Result3]="( $result3 )"
-Results[Result4]="( $result4 )"
-
-echo All Computation Results : ${Results[@]}
-for key in "${Results[@]}"
-do 
-	echo $key
+for (( i = 0; i <= 3; i++ ))
+do
+   for (( j = $i; j <= 3; j++ ))
+   do
+      if [ ${Array[$i]} -lt ${Array[$j]} ]
+		then
+       t=${Array[$i]}
+       Array[$i]=${Array[$j]}
+       Array[$j]=$t
+      fi
+   done
 done
-echo All result : ${Results[@]}
+
+echo -e "\nSorted Numbers in Descending Order:"
+for (( i=0; i <= 3; i++ )) 
+do
+  echo ${Array[$i]}
+done
